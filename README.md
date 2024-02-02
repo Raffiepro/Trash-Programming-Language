@@ -3,7 +3,7 @@ Special thanks to Python for inspiring me by letting me know that you don't have
 just get people to make libraries! :]
 
 You can include this magical hpp file and use it for games and stuff  
-This is really bare bones and I swear I'll update it!!  
+This is really bare bones and I swear I'll update it!! (Right now it only supports running code from a file)  
 BUT AT LEAST THERE'S NO ANNOYING DLL'S AND LINKING!!!
   
 Example:  
