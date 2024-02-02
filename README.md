@@ -7,7 +7,10 @@ This is really bare bones and I swear I'll update it!! (Right now it only suppor
 BUT AT LEAST THERE'S NO ANNOYING DLL'S AND LINKING!!!
   
 Example:  
-in name;  
-out %name;out " is suspicious!!";  
-set raffie pro;  
-out %raffie;
+out "Enter a number!! ";  
+in num1;  
+out "Enter second number!! ";  
+in num2;  
+set num3 %num1;  
+add num3 %num2;  
+out %num1;out " plus ";out %num2;out " is: ";out %num3;
