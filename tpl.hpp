@@ -3,7 +3,6 @@
 #include <fstream>
 #include <algorithm>
 
-
 namespace tpl
 {
     struct variable
@@ -17,12 +16,12 @@ namespace tpl
         std::string data;
     };
 
-    std::vector<tpl::variable> variables;
+    std::vector<variable> variables;
 
     variable* getVariable(const char* var)
     {
         size_t index=0;
-        for (tpl::variable& i : variables)
+        for (variable& i : variables)
         {
             if (i.name == var)
             {
@@ -36,7 +35,7 @@ namespace tpl
     void setVariable(const char* var, const char* to)
     {
         bool found = false;
-        for (tpl::variable& i : variables)
+        for (variable& i : variables)
         {
             if (i.name == var)
             {
@@ -126,6 +125,32 @@ namespace tpl
                 std::string input;
                 std::getline(std::cin, input);
                 setVariable(args[1].c_str(), input.c_str());
+            }
+            if(args[0]=="add")
+            {
+                int sum = std::stoi(getVariable(args[1].c_str())->data);
+                variable* var = getVariable(args[2].c_str());
+                if(var==NULL) { sum += std::stoi(args[2]); }
+                else { sum += std::stoi(var->data); }
+                setVariable(args[1].c_str(), std::to_string(sum).c_str());
+            }
+            if(args[0]=="sub")
+            {
+                int sum = std::stoi(getVariable(args[1].c_str())->data);
+                sum -= std::stoi(args[2]);
+                setVariable(args[1].c_str(), std::to_string(sum).c_str());
+            }
+            if(args[0]=="mul")
+            {
+                int sum = std::stoi(getVariable(args[1].c_str())->data);
+                sum *= std::stoi(args[2]);
+                setVariable(args[1].c_str(), std::to_string(sum).c_str());
+            }
+            if(args[0]=="div")
+            {
+                int sum = std::stoi(getVariable(args[1].c_str())->data);
+                sum /= std::stoi(args[2]);
+                setVariable(args[1].c_str(), std::to_string(sum).c_str());
             }
         }
     }
