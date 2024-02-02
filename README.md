@@ -8,4 +8,6 @@ BUT AT LEAST THERE'S NO ANNOYING DLL'S AND LINKING!!!
   
 Example:  
 in name;  
-out %name;out " is suspicious!!";
+out %name;out " is suspicious!!";  
+set raffie pro;
+out %raffie;
