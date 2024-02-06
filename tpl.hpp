@@ -28,7 +28,7 @@ namespace tpl
                 return &i;
             }
         }
-        
+
         return NULL;
     }
 
@@ -101,6 +101,7 @@ namespace tpl
 
     void runFromFile(const char* path)
     {
+        bool skipping_if=false, skipping_else=false;
         std::ifstream file_s(path);
 
         std::string line;
@@ -108,13 +109,45 @@ namespace tpl
         {
             line.erase(std::remove(line.begin(), line.end(), '\n'), line.end());
             line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
+
+            if(line=="else")
+            {
+                if(!skipping_if)
+                {
+                    skipping_else=true;
+                }
+                else
+                {
+                    skipping_if=false;
+                }
+                continue;
+            }
+            if(line=="endif")
+            {
+                skipping_if=false;
+                skipping_else=false;
+                continue;
+            }
+
+            if(skipping_if || skipping_else)
+            {
+                continue;
+            }
+
             std::vector<std::string> args;
             
             tokenize(line, args);
 
             if(args[0]=="out")
             {
-                std::cout<<args[1];
+                if(args[1]=="\\n")
+                {
+                    std::cout<<'\n';
+                }
+                else
+                {
+                    std::cout<<args[1];
+                }
             }
             if(args[0]=="set")
             {
@@ -126,12 +159,41 @@ namespace tpl
                 std::getline(std::cin, input);
                 setVariable(args[1].c_str(), input.c_str());
             }
+            if(args[0]=="sys")
+            {
+                system(args[1].c_str());
+            }
+            if(args[0]=="free")
+            {
+                size_t len = variables.size();
+                for(size_t i=0; i<len; i++)
+                {
+                    if(variables[i].name == args[1])
+                    {
+                        variables.erase(variables.begin() + i);
+                        break;
+                    }
+                }
+            }
+            if(args[0]=="if")
+            {
+                if(args[1]!=args[2])
+                {
+                    skipping_if=true;
+                }
+            }
+            if(args[0]=="getvars")
+            {
+                for(variable var : variables)
+                {
+                    std::cout<<var.name<<": "<<var.data<<'\n';
+                }
+            }
+            
             if(args[0]=="add")
             {
                 int sum = std::stoi(getVariable(args[1].c_str())->data);
-                variable* var = getVariable(args[2].c_str());
-                if(var==NULL) { sum += std::stoi(args[2]); }
-                else { sum += std::stoi(var->data); }
+                sum += std::stoi(args[2]);
                 setVariable(args[1].c_str(), std::to_string(sum).c_str());
             }
             if(args[0]=="sub")
