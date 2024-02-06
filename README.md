@@ -12,3 +12,4 @@ BUT AT LEAST THERE'S NO ANNOYING DLL'S AND LINKING!!!
 **What the hell** - ***God***  
 **sus** - ***Amogus***  
 **SHUT UP AND TAKE MY MONKEY!!** - ***No-one***
+## PLEASE SUBSCRIBE TO ME ON YOUTUBE!!!
