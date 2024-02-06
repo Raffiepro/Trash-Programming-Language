@@ -8,7 +8,8 @@ This is really bare bones and I swear I'll update it!! (Right now it only suppor
 BUT AT LEAST THERE'S NO ANNOYING DLL'S AND LINKING!!!
   
 ## Reviews from our beloved users:  
-This is literally assembly 2.0, now add if statements - BinarySandia04 (I have now added if and else statements)  
-I am proud of this - Raffiepro  
-What the hell - God  
-sus - Amogus
+**This is literally assembly 2.0, now add if statements** - ***BinarySandia04*** *(I have now added if and else statements)*  
+**idk why i made dis** - ***Raffiepro***  
+**What the hell** - ***God***  
+**sus** - ***Amogus***  
+**SHUT UP AND TAKE MY MONKEY!!** - ***No-one***
